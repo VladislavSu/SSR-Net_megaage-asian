@@ -6,6 +6,6 @@ do
     for j in `seq 4 $max2`
     do
         echo "$j" 50
-        KERAS_BACKEND=tensorflow python3 ./SSRNET/SSRNET_train.py --input1 ./data/age_dataset.npz --input2 ./data/megaage_test.npz --db megaage --netType1 $i --netType2 $j --batch_size 50
+        KERAS_BACKEND=tensorflow python3 ./SSRNET/SSRNET_train.py --input1 ./data/age_dataset_train.npz --input2 ./data/age_dataset_test.npz --db megaage --netType1 $i --netType2 $j --batch_size 50
     done
 done

@@ -1,18 +1,19 @@
 import numpy as np
 import cv2
-import scipy.io
+# import scipy.io
 import argparse
-from tqdm import tqdm
-from os import listdir
-from os.path import isfile, join
-import sys
-import dlib
-from moviepy.editor import *
+import os
+# from tqdm import tqdm
+# from os import listdir
+# from os.path import isfile, join
+# import sys
+# import dlib
+# from moviepy.editor import *
 
 
 def get_args():
-    parser = argparse.ArgumentParser(description="This script cleans-up noisy labels "
-                                                 "and creates database for training.",
+    parser = argparse.ArgumentParser(description="This script "
+                                                 "creates database for training.",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--output", "-o", type=str,
                         help="path to output database mat file")
@@ -25,14 +26,16 @@ def get_args():
 
 def main():
     args = get_args()
-    output_path = './data/age_dataset.npz'
-    #output_path = './data/megaage_train'
+    #output_path = './data/age_dataset_train.npz'
+    output_path = './data/age_dataset_test.npz'
+
     img_size = args.img_size
     
     out_ages = []
     out_imgs = []
     
-    rootDir = 'AgeDataset'
+    #rootDir = 'AgeDataset/train'
+    rootDir = 'AgeDataset/test'
     
     for dirName, subdirList, fileList in os.walk(rootDir):
         #if subdirList: print(subdirList)
