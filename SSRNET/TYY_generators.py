@@ -24,13 +24,13 @@ def augment_data(images):
             images[i] = random_crop(images[i],4)
         """
         if np.random.random() > 0.75:
-            images[i] = tf.contrib.keras.preprocessing.image.random_rotation(images[i], 10, row_axis=0, col_axis=1, channel_axis=2)
+            images[i] = tf.contrib.keras.preprocessing.image.random_rotation(images[i], 15, row_axis=0, col_axis=1, channel_axis=2)
         if np.random.random() > 0.75:
-            images[i] = tf.contrib.keras.preprocessing.image.random_shear(images[i], 0.1, row_axis=0, col_axis=1, channel_axis=2)
+            images[i] = tf.contrib.keras.preprocessing.image.random_shear(images[i], 0.15, row_axis=0, col_axis=1, channel_axis=2)
         if np.random.random() > 0.75:
-            images[i] = tf.contrib.keras.preprocessing.image.random_shift(images[i], 0.1, 0.1, row_axis=0, col_axis=1, channel_axis=2)
+            images[i] = tf.contrib.keras.preprocessing.image.random_shift(images[i], 0.15, 0.15, row_axis=0, col_axis=1, channel_axis=2)
         if np.random.random() > 0.75:
-            images[i] = tf.contrib.keras.preprocessing.image.random_zoom(images[i], [0.9,1.1], row_axis=0, col_axis=1, channel_axis=2)
+            images[i] = tf.contrib.keras.preprocessing.image.random_zoom(images[i], [0.85,1.15], row_axis=0, col_axis=1, channel_axis=2)
         
     return images
 
