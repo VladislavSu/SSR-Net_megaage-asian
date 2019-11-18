@@ -26,29 +26,30 @@ def get_args():
 
 def main():
     args = get_args()
-    #output_path = './data/age_dataset_train.npz'
-    output_path = './data/age_dataset_test.npz'
+    output_path = './data/age_dataset_train.npz'
+    #output_path = './data/age_dataset_test.npz'
 
     img_size = args.img_size
     
     out_ages = []
     out_imgs = []
     
-    #rootDir = 'AgeDataset/train'
-    rootDir = 'AgeDataset/test'
+    rootDir = 'AgeDataset/train'
+    #rootDir = 'AgeDataset/train1'
+    #rootDir = 'AgeDataset/test'
     
     for dirName, subdirList, fileList in os.walk(rootDir):
         #if subdirList: print(subdirList)
         age = dirName.split('/')[-1]
         for fname in fileList:
-            if fname.endswith(".jpg") or fname.endswith(".JPG"):
+            if fname.endswith(".jpg") or fname.endswith(".png"):
                 fullname = dirName+"/"+fname
                 input_img = cv2.imread(fullname)
                 input_img = cv2.resize(input_img,(img_size,img_size))
-                im_rgb = cv2.cvtColor(input_img, cv2.COLOR_BGR2RGB)
+                im_rgb = input_img #cv2.cvtColor(input_img, cv2.COLOR_BGR2RGB)
                 out_imgs.append(im_rgb)
                 out_ages.append(int(age))
-                #print(fname, age)
+                #print(fullname, age)
     
     
     np.savez(output_path,image=np.array(out_imgs), age=np.array(out_ages), img_size=img_size)
