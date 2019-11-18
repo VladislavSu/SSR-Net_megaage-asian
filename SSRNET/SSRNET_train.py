@@ -72,6 +72,7 @@ def main():
 
     if db_name == "megaage":
         weight_file = "./pre-trained/wiki/ssrnet_3_3_3_64_1.0_1.0/ssrnet_3_3_3_64_1.0_1.0.h5"
+        #weight_file = "./pre-trained/imdb/ssrnet_3_3_3_64_1.0_1.0/ssrnet_3_3_3_64_1.0_1.0.h5"
         model.load_weights(weight_file)
     
     logging.debug("Model summary...")
