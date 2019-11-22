@@ -148,7 +148,7 @@ class SSR_net:
             b = x[0][:,0]*0
             c = x[0][:,0]*0
             A = s1*s2*s3
-            V = 101
+            V = 70
 
             for i in range(0,s1):
                 a = a+(i+lambda_local*x[6][:,i])*x[0][:,i]
@@ -169,7 +169,8 @@ class SSR_net:
             age = (a+b+c)*V
             return age
         
-        pred_a = Lambda(merge_age,arguments={'s1':self.stage_num[0],'s2':self.stage_num[1],'s3':self.stage_num[2],'lambda_local':self.lambda_local,'lambda_d':self.lambda_d},output_shape=(1,),name='pred_a')([pred_a_s1,pred_a_s2,pred_a_s3,delta_s1,delta_s2,delta_s3, local_s1, local_s2, local_s3])
+        pred_a = Lambda(merge_age,arguments={'s1':self.stage_num[0],'s2':self.stage_num[1],'s3':self.stage_num[2],'lambda_local':self.lambda_local,'lambda_d':self.lambda_d},
+        output_shape=(1,),name='pred_a')([pred_a_s1,pred_a_s2,pred_a_s3,delta_s1,delta_s2,delta_s3, local_s1, local_s2, local_s3])
 
         model = Model(inputs=inputs, outputs=pred_a)
         return model
