@@ -35,7 +35,7 @@ def get_args():
                         help="network type")
     parser.add_argument("--batch_size", type=int, default=128,
                         help="batch size")
-    parser.add_argument("--nb_epochs", type=int, default=90,
+    parser.add_argument("--nb_epochs", type=int, default=60,
                         help="number of epochs")
 
     args = parser.parse_args()
